@@ -1,0 +1,42 @@
+Elliot Bidwell
+CS 2300 – 001
+Programming Assignment #3
+
+Pseudocode:
+Linear System Class:
+* Input matrix member variable
+
+* System solution calculation function:
+o Check for linear dependence with determinant
+* Check for underdeterminism
+* Check for unsolvable
+o Use Cramer’s Rule
+
+* Eigen things functions:
+o Use quadratic equation for eigenvalues
+o Generate shears for each matrix
+o Use back substitution
+o Multiply eigen decomposition together
+
+* Areas and distances function:
+o Subtract points to create vectors to span the triangle
+o If 2D:
+* Area = determinant / 2
+* Create perpendicular vector for 1st two coefficients
+* Calculate 3rd coefficient of line equation
+* Plug 3rd point into equation for distance
+o Else:
+* Calculate cross product and divide its magnitude by 2 to get area
+* Normalize one of the vectors
+* Find the midpoint on the plane
+* Formulate implicit equation of the plane by calculating coefficients
+* Plug 3rd point in to get distance
+
+Main function:
+* Create system object
+* Make calls to linear system functions
+
+Final Thoughts:
+The implementation of this code was more straightforward than I originally had thought. Once I figured out that there are a few shortcuts that are more viable for programming than other methods, such as the quadratic equation and Cramer’s Rule, my planning became simpler. My actual code did not depart from my pseudocode very much, which made the implementation process smooth compared to the method of simply coding first and then planning later. Had I not planned, I would have written code that perhaps did what it was supposed to along the way, only to realize that it had to be heavily modified to fit in new features. Overall, the process went as expected. However, there are some known issues with the code. The implementation is only generalized to a certain degree. It does not support row or column pivoting for solving systems and cannot solve homogeneous systems outside the ones produced in the eigen things implementation. The row and column pivoted matrices are implemented, but never used, so in the case that one of the right-facing downward diagonal elements of a matrix in the eigen things function is a 0, the program won’t produce the correct values. Pivoting is, however, not necessary for the function that solves linear systems, so this implementation does not suffer from these cases. However, the function that employs Cramer’s rule cannot solve homogeneous systems, as that would require gauss elimination, which is only implemented in the eigen things function.
+
+Git Clone Link
